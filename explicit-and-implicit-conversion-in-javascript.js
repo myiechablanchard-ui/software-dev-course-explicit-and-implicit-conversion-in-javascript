@@ -27,6 +27,55 @@ if (isValid) {
     console.log("This is valid!");
 }
 
-let age = "25";
+let age = Number("25"); // this fix works because it is now a number instead of a string which produced and unwanted output of 255.
 let totalAge = age + 5;
 console.log("Total Age: " + totalAge);
+
+
+// Implicit Type Conversion
+let implicitBefore = "5";
+let implicitAfter = implicitBefore - 2;
+
+console.log("Implicit BEFORE type:", typeof implicitBefore);  
+console.log("Implicit AFTER value:", implicitAfter);
+console.log("Implicit AFTER type:", typeof implicitAfter);
+
+// -----------------------------
+// IMPLICIT TYPE CONVERSION EXPLANATION
+// -----------------------------
+
+// Before: "5" is a string
+let implicitBefore = "5";
+
+// JavaScript sees the minus operator and automatically
+// converts the string "5" into the number 5.
+// This is implicit conversion because YOU did not ask for it.
+let implicitAfter = implicitBefore - 2;
+
+console.log("Implicit BEFORE type:", typeof implicitBefore);  // string
+console.log("Implicit AFTER value:", implicitAfter);          // 3
+console.log("Implicit AFTER type:", typeof implicitAfter);    // number
+
+// Explicit Type Conversion with edge case
+let explicitBefore = "hello";
+let explicitAfter = Number(explicitBefore);
+
+console.log("Explicit BEFORE type:", typeof explicitBefore);
+console.log("Explicit AFTER value:", explicitAfter);   // NaN
+console.log("Explicit AFTER type:", typeof explicitAfter);
+
+// -----------------------------
+// EXPLICIT TYPE CONVERSION EXPLANATION
+// -----------------------------
+
+// Before: "hello" is a string
+let explicitBefore = "hello";
+
+// Number("hello") cannot convert the text into a real number,
+// so JavaScript returns NaN (Not-a-Number).
+// This is explicit conversion because YOU used Number().
+let explicitAfter = Number(explicitBefore);
+
+console.log("Explicit BEFORE type:", typeof explicitBefore);  // string
+console.log("Explicit AFTER value:", explicitAfter);          // NaN
+console.log("Explicit AFTER type:", typeof explicitAfter);    // number (NaN is still a number!)
